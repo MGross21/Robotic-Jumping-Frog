@@ -14,7 +14,7 @@ ___
 
 The model, as linked [here](frogModel.xml), allows for link lengths and joint stiffness to be changed easily by passing in the desired lengths. This will update the model and help when re-running the simulation many times as needed for optimization.
 
-The team used [motor characterization](Frog_Model_Optimization.ipynb) and compliant beam analysis *link* to determine the model parameters. 
+The team used [motor characterization](Frog_Model_Optimization.ipynb) and compliant beam analysis [*link*](manufacturing/links.ipynb)to determine the model parameters. 
 
 Additionally in this step, considering the desire for a two-foot jumping gait, the team determined through the motor motor characterization and analysis that there was a physical constraint to the design of the controller and the max potential impulse. The minimum time in which we could use the full 180-degree motion of the servo was about 0.35 seconds which not only determined how fast the legs could move but how fast they could retract before landing.
 
