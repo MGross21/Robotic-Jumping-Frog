@@ -6,16 +6,13 @@
 
 [![See Here](Figures/yt_logo_rgb_light.png)](https://www.youtube.com/embed/GysCEJ6NQpc)
 
-
 ## Project Overview
 
 Continuing with the project's previous research, the team hopes to define the frog five-bar model in simulation using Mujoco, building off the kinematics. Then optimize the parameters for design, namely the joint stiffness, overall length, and various link lengths. Given this, the team will plan and fabricate the prototype using foldable robotics methods, and use then test it and capture the results. With that, an experimental validation will be complete and the team can analyze the results.
 
 Specifically, the scope of this project is given the frog's inherent body mass, how can we reconfigure the link lengths and material stiffness of the five-bar mechanism, representative of rear frog legs, to determine the optimal vertical and horizontal propulsion during its jumping gait. The rationale for this decision is explained in part 2, where we optimized the design.
 
-<video controls src="Videos/sim_vs_irl.mp4" title="Title" width="640" height="360">
-  Your browser does not support the video tag.
-</video>
+[Simulation vs Prototype Final Video Results](Videos/sim_vs_irl.mp4)
 ___
 
 ### Part 1: Define the System Model
