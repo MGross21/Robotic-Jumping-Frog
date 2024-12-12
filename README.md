@@ -2,19 +2,32 @@
 
 *By Jacob Pisors and Michael Gross*
 
+## Video Presentation
+
+<iframe width="640" height="360" 
+        src="https://www.youtube.com/embed/GysCEJ6NQpc" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+</iframe>
+
+
 ## Project Overview
 
 Continuing with the project's previous research, the team hopes to define the frog five-bar model in simulation using Mujoco, building off the kinematics. Then optimize the parameters for design, namely the joint stiffness, overall length, and various link lengths. Given this, the team will plan and fabricate the prototype using foldable robotics methods, and use then test it and capture the results. With that, an experimental validation will be complete and the team can analyze the results.
 
 Specifically, the scope of this project is given the frog's inherent body mass, how can we reconfigure the link lengths and material stiffness of the five-bar mechanism, representative of rear frog legs, to determine the optimal vertical and horizontal propulsion during its jumping gait. The rationale for this decision is explained in part 2, where we optimized the design.
 
+<video controls src="Videos/sim_vs_irl.mp4" title="Title" width="640" height="360">
+  Your browser does not support the video tag.
+</video>
 ___
 
 ### Part 1: Define the System Model
 
 The model, as linked [here](frogModel.xml), allows for link lengths and joint stiffness to be changed easily by passing in the desired lengths. This will update the model and help when re-running the simulation many times as needed for optimization.
 
-The team used [motor characterization](Frog_Model_Optimization.ipynb) and [compliant beam analysis](compliant_beam_analysis.ipynb) to determine the model parameters. 
+The team used [motor characterization](System_Model_Identification/MotorModel.ipynb) and [compliant beam analysis](System_Model_Identification/compliant_beam_analysis.ipynb) to determine the model parameters. 
 
 Additionally in this step, considering the desire for a two-foot jumping gait, the team determined through the motor motor characterization and analysis that there was a physical constraint to the design of the controller and the max potential impulse. The minimum time in which we could use the full 180-degree motion of the servo was about 0.35 seconds which not only determined how fast the legs could move but how fast they could retract before landing.
 
@@ -64,7 +77,7 @@ The mechanism that will be fabricated will be the five-bar mechanism that repres
 
 ![librecadscreenshot](Figures/librecadscreenshot.png)
 
-The link lengths were influenced by the simulation. From the sim, the team knew we wanted to test out how link D, the "foot" affected the jump distance. However, from our simulation, we also gathered ideal proportions of the links for jumping. So, using those proportions, we found out how to dynamically adjust the percentage that links D relative to the overall length whilst keeping the proportions as similar as possible. So we could adjust the percentage we wanted link D to be in our code and have it output where the joints should be in our model. Here is the Python code for this explanation [code](links.ipynb). Below is a figure comparing the percentages of link D we chose to study, based on our simulation that showed that as link D was a greater percentage (up to a certain point), jump performance should be improved.
+The link lengths were influenced by the simulation. From the sim, the team knew we wanted to test out how link D, the "foot" affected the jump distance. However, from our simulation, we also gathered ideal proportions of the links for jumping. So, using those proportions, we found out how to dynamically adjust the percentage that links D relative to the overall length whilst keeping the proportions as similar as possible. So we could adjust the percentage we wanted link D to be in our code and have it output where the joints should be in our model.[Here](links.ipynb) is the Python code for this explanation. Below is a figure comparing the percentages of link D we chose to study, based on our simulation that showed that as link D was a greater percentage (up to a certain point), jump performance should be improved.
 
 ![links_comparison](Figures/links_comparison.png)
 
@@ -82,7 +95,7 @@ For the electronics and code, the servos were wired up using long wires to allow
 
 #### Recorded Behavior
 
-During testing, it seemed that the 20% D leg length was the most consistent in distance and jump height. The 22% was relatively flat, and the 25% was inconsistent but looked to produce some of the highest jumps, but this did not correspond with the furthest distance. The furthest distances traveled were about three feet, and the highest jumps were only a few millimeters off the ground. See the figure below for the results which show (what they show). These results were from using motion tracking on the frog, where the marker was tracked by frames per second. 
+During testing, it seemed that the 20% D leg length was the most consistent in distance and jump height. The 22% was relatively flat, and the 25% was inconsistent but looked to produce some of the highest jumps, but this did not correspond with the furthest distance. The furthest distances traveled were about three feet, and the highest jumps were only a few millimeters off the ground. See the figure below for the results which show (what they show). These results were from using motion tracking on the frog, where the marker was tracked by frames per second.
 
 ![experimentalruns_chart](Figures/experimentalruns_chart.png)
 
