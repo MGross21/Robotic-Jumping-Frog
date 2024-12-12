@@ -14,7 +14,7 @@ ___
 
 The model, as linked [here](frogModel.xml), allows for link lengths and joint stiffness to be changed easily by passing in the desired lengths. This will update the model and help when re-running the simulation many times as needed for optimization.
 
-The team used [motor characterization](Frog_Model_Optimization.ipynb) and [compliant beam analysis](links.ipynb) to determine the model parameters. 
+The team used [motor characterization](Frog_Model_Optimization.ipynb) and [compliant beam analysis](compliant_beam_analysis.ipynb) to determine the model parameters. 
 
 Additionally in this step, considering the desire for a two-foot jumping gait, the team determined through the motor motor characterization and analysis that there was a physical constraint to the design of the controller and the max potential impulse. The minimum time in which we could use the full 180-degree motion of the servo was about 0.35 seconds which not only determined how fast the legs could move but how fast they could retract before landing.
 
@@ -64,7 +64,7 @@ The mechanism that will be fabricated will be the five-bar mechanism that repres
 
 ![librecadscreenshot](Figures/librecadscreenshot.png)
 
-The link lengths were influenced by the simulation. From the sim, the team knew we wanted to test out how link D, the "foot" affected the jump distance. However, from our simulation, we also gathered ideal proportions of the links for jumping. So, using those proportions, we found out how to dynamically adjust the percentage that links D relative to the overall length whilst keeping the proportions as similar as possible. So we could adjust the percentage we wanted link D to be in our code and have it output where the joints should be in our model. Here is the Python code for this explanation *link*. Below is a figure comparing the percentages of link D we chose to study, based on our simulation that showed that as link D was a greater percentage (up to a certain point), jump performance should be improved.
+The link lengths were influenced by the simulation. From the sim, the team knew we wanted to test out how link D, the "foot" affected the jump distance. However, from our simulation, we also gathered ideal proportions of the links for jumping. So, using those proportions, we found out how to dynamically adjust the percentage that links D relative to the overall length whilst keeping the proportions as similar as possible. So we could adjust the percentage we wanted link D to be in our code and have it output where the joints should be in our model. Here is the Python code for this explanation [code](links.ipynb). Below is a figure comparing the percentages of link D we chose to study, based on our simulation that showed that as link D was a greater percentage (up to a certain point), jump performance should be improved.
 
 ![links_comparison](Figures/links_comparison.png)
 
