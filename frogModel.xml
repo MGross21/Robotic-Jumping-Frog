@@ -1,0 +1,169 @@
+<mujoco>
+    <compiler angle="degree"/>
+    <visual><global offwidth="{render_width}" offheight="{render_height}"/></visual>
+
+    <option gravity="0 0 -9.81"/>
+    
+    <option timestep="{ts:e}"/>
+    <option><flag contact="enable"/></option>
+    <option integrator="RK4"/>
+
+
+    <default>
+        <geom contype="1" conaffinity="1" condim="3" friction=".6 .3 .3" solimp=".999 .999 .001" solref=".001 1" margin="0.001" group="0"/>
+    </default>
+        
+        <worldbody>
+            <light name="light" pos="0 0 1" dir="0 0 -1"/>
+
+            <body name="frog_body" pos="{body_x_spawn} 0 {body_z_spawn}">
+                <geom type="box" size="{body_length} {body_width} {leg_thickness}" pos="{body_length} 0 0" mass="{body_mass}" rgba="1 0 0 1" />
+                <joint name="x_axis" type="slide" pos="0 0 0" axis="1 0 0" stiffness="0" damping="0" />
+                <joint name="z_axis" type="slide" pos="0 0 0" axis="0 0 1" stiffness="0" damping="0" />
+                <site name="frog_body" pos="0 0 0" />
+                <camera name="frog_cam" mode="targetbody" target="frog_body" pos="0 -2.5 1" euler="45 -45 0"/>
+                
+
+                <!-- FRONT STATIC LEGS -->
+                <body name="front_leg_left" pos="{front_leg_x} {body_width} 0">
+                    <geom type="box" size="{leg_width} {leg_width} {front_leg_height}" pos="0 0 -{front_leg_height}" condim="1" mass="0" rgba="1 0 0 1" />
+                </body>
+                <body name="front_leg_right" pos="{front_leg_x} -{body_width} 0">
+                    <geom type="box" size="{leg_width} {leg_width} {front_leg_height}" pos="0 0 -{front_leg_height}" condim="1" mass="0" rgba="1 0 0 1" />
+                </body>
+
+
+                <!-- LEFT BACK LEG -->
+                <body name="A_left" pos="0 {leg_offset_from_body} 0">
+                    <geom type="box" size="{a_len} {leg_width} {leg_thickness}" pos="{a_len} 0 0" mass="{leg_segment_mass}" rgba="0 0 1 1" />
+                    
+                    <body name="B_left" pos="{b_off} 0 0">
+                        <geom type="box" size="{b_len} {leg_width} {leg_thickness}" pos="{b_len} 0 0" mass="{leg_segment_mass}" rgba="0 1 0 1" />
+                        <joint name="jointB_left" type="hinge" pos="0 0 0" axis="0 1 0" limited="true" range="0 150" stiffness="{k:e}" damping="{b:e}" />
+                        
+                        <body name="C_left" pos="{c_off} 0 0">
+                            <geom type="box" size="{c_len} {leg_width} {leg_thickness}" pos="{c_len} 0 0" mass="{leg_segment_mass}" rgba="0 1 0 1" />
+                            <joint name="jointC_left" type="hinge" pos="0 0 0" axis="0 1 0" limited="true" range="0 100" stiffness="{k:e}" damping="{b:e}" />
+                            <site name="foot_hinge_left" pos="0 0 -1" />
+
+                            <body name="D_left" pos="{d_off} 0 0">
+                                <geom type="box" size="{d_len} {leg_width} {leg_thickness}" pos="{d_len} 0 0" mass="{leg_segment_mass}" rgba="0 1 0 1" />
+                                <joint name="jointD_left" type="hinge" pos="0 0 0" axis="0 1 0" limited="true" range="0 100" stiffness="{k:e}" damping="{b:e}" />
+                                
+                                <body name="E_left" pos="{e_off} 0 0">
+                                    <geom type="box" size="{e_len} {leg_width} {leg_thickness}" pos="{e_len} 0 0" mass="{leg_segment_mass}" rgba="0 1 0 1" />
+                                    <joint name="jointE_left" type="hinge" pos="0 0 0" axis="0 1 0" limited="true" range="0 100" stiffness="{k:e}" damping="{b:e}" />
+                                
+                                    <body name="Ap_left" pos="{a_off} 0 0">
+                                        <geom type="box" size="{a_len} {leg_width} {leg_thickness}" pos="{a_len} 0 0" mass="{leg_segment_mass}" rgba="0 0 1 1" />
+                                        <joint name="jointAp_left" type="hinge" axis="0 1 0" limited="true" range="0 150" stiffness="{k:e}" damping="{b:e}" />
+                                    </body>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+
+                <!-- RIGHT BACK LEG-->
+                <body name="A_right" pos="0 -{leg_offset_from_body} 0">
+                    <geom type="box" size="{a_len} {leg_width} {leg_thickness}" pos="{a_len} 0 0" mass="{leg_segment_mass}" rgba="0 0 1 1" />
+                    
+                    <body name="B_right" pos="{b_off} 0 0">
+                        <geom type="box" size="{b_len} {leg_width} {leg_thickness}" pos="{b_len} 0 0" mass="{leg_segment_mass}" rgba="0 1 0 1" />
+                        <joint name="jointB_right" type="hinge" pos="0 0 0" axis="0 1 0" limited="true" range="0 150" stiffness="{k:e}" damping="{b:e}" />
+                        
+                        <body name="C_right" pos="{c_off} 0 0">
+                            <geom type="box" size="{c_len} {leg_width} {leg_thickness}" pos="{b_len} 0 0" mass="{leg_segment_mass}" rgba="0 1 0 1" />
+                            <joint name="jointC_right" type="hinge" pos="0 0 0" axis="0 1 0" limited="true" range="0 100" stiffness="{k:e}" damping="{b:e}" />
+                            <site name="foot_hinge_right" pos="0 0 -1" />
+
+                            <body name="D_right" pos="{d_off} 0 0">
+                                <geom type="box" size="{d_len} {leg_width} {leg_thickness}" pos="{d_len} 0 0" mass="{leg_segment_mass}" rgba="0 1 0 1" />
+                                <joint name="jointD_right" type="hinge" pos="0 0 0" axis="0 1 0" limited="true" range="0 100" stiffness="{k:e}" damping="{b:e}" />
+                                
+                                <body name="E_right" pos="{e_off} 0 0">
+                                    <geom type="box" size="{e_len} {leg_width} {leg_thickness}" pos="{e_len} 0 0" mass="{leg_segment_mass}" rgba="0 1 0 1" />
+                                    <joint name="jointE_right" type="hinge" pos="0 0 0" axis="0 1 0" limited="true" range="0 100" stiffness="{k:e}" damping="{b:e}" />
+                                
+                                    <body name="Ap_right" pos="{a_off} 0 0">
+                                        <geom type="box" size="{a_len} {leg_width} {leg_thickness}" pos="{a_len} 0 0" mass="{leg_segment_mass}" rgba="0 0 1 1" />
+                                        <joint name="jointAp_right" type="hinge" axis="0 1 0" limited="true" range="0 150" stiffness="{k:e}" damping="{b:e}" />
+                                    </body>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+
+            </body>
+
+            <body name="floor" pos="0 0 0">
+                <geom pos="0 0 -0.025" size="15 15 0.05" type="plane" rgba="1 1 1 1"/>
+            </body>
+
+            <camera name="tracking_camera" mode="targetbody" target="frog_body" pos="0 -0.01 0.025" euler="0 0 0" />
+            
+        </worldbody>
+
+    <actuator>
+        <motor name="FR" joint="jointB_right"/>
+        <motor name="BR" joint="jointAp_right"/>
+        <motor name="FL" joint="jointB_left"/>
+        <motor name="BL" joint="jointAp_left"/>
+    </actuator>
+    
+
+    <equality>
+        <weld name="hip_weld_right" active="true" body1="A_right" body2="Ap_right" torquescale="1" solimp=".9 .95 .001" solref=".02 1" anchor="0 0 0" relpose="0 0 0 1 0 0 0"/>
+        <weld name="hip_weld_left" active="true" body1="A_left" body2="Ap_left" torquescale="1" solimp=".9 .95 .001" solref=".02 1" anchor="0 0 0" relpose="0 0 0 1 0 0 0"/>
+    </equality>
+
+    <contact>
+        <!-- Exclude Right Limb Contact-->
+        <exclude body1="A_right" body2="B_right" />
+        <exclude body1="B_right" body2="C_right" />
+        <exclude body1="C_right" body2="D_right" /> 
+        <exclude body1="D_right" body2="E_right" />  
+        <exclude body1="Ap_right" body2="A_right" />
+
+        <!-- Exclude Extra Weld Limb from all contact-->
+        <exclude body1="Ap_right" body2="B_right" />
+        <exclude body1="Ap_right" body2="C_right" />
+        <exclude body1="Ap_right" body2="D_right" /> 
+        <exclude body1="Ap_right" body2="E_right" />
+        
+        <exclude body1="Ap_left" body2="B_left" />
+        <exclude body1="Ap_left" body2="C_left" />
+        <exclude body1="Ap_left" body2="D_left" /> 
+        <exclude body1="Ap_left" body2="E_left" /> 
+
+        <!-- Exclude Body/Limb Contact-->
+        <exclude body1="frog_body" body2="A_right" />
+        <exclude body1="frog_body" body2="Ap_right" />
+        <exclude body1="frog_body" body2="A_left" />
+        <exclude body1="frog_body" body2="Ap_left" />
+        
+        <!-- Exclude Left Limb Contact-->
+        <exclude body1="A_left" body2="B_left" />
+        <exclude body1="B_left" body2="C_left" />
+        <exclude body1="C_left" body2="D_left" /> 
+        <exclude body1="D_left" body2="E_left" />  
+        <exclude body1="Ap_left" body2="A_left" />     
+    </contact>
+
+
+    <sensor>
+        <velocimeter name="sensor_velocity" site="frog_body" />
+        <gyro name="sensor_gyro" site="frog_body" />
+        
+        <!--<framepos name="sensor_pos" objtype="site" objname="frog_body" reftype="geom" refname="floor" />-->
+        <!--<framexaxis name="body_x" objtype="site" objname="frog_body" reftype="geom" refname="floor" />-->
+        <!--<frameyaxis name="body_y" objtype="site" objname="frog_body" reftype="geom" refname="floor" />-->
+        <!--<framezaxis name="body_z" objtype="site" objname="frog_body" reftype="geom" refname="floor" />-->
+
+        <accelerometer name="sensor_accel" site="frog_body" />
+        <force name="sensor_force" site="foot_hinge_right" />
+        <torque name="sensor_torque" site="foot_hinge_right" />
+    </sensor>
+        
+</mujoco>
