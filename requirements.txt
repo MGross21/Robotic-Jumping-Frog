@@ -1,0 +1,21 @@
+idealab_tools # a variety of utilities produced by me
+foldable_robotics # a package for generating and computing with layer-based 2D geometries
+anaconda # Installs packages like numpy, scipy, sympy, matplotlib, and more
+pyqtgraph,# pyopenglEnables 3d rendering via OpenGl.
+pycairo # support package for 2d graphics with many graphics utilities
+shapely # 2d Constructive Solid Geometry library with many operations
+pyserial # use the serial port from python
+ffmpeg # video authoring, compressing tool
+meshio # input and output of typical mesh files
+pygmsh # creation of meshes from primitives
+ezdxf # work with dxf files to extract geometries and produce dxf files in python
+pypdf4 # generate pdfs from python
+pypoly2tri # delaunay triangulation in python
+wrapt # support package for esptool
+esptool # for flashing Python bootloaders
+thonny # gui for micropython development on an ESP32. Includes a GUI-based flashing interface
+
+numpy
+scipy
+sympy
+matplotlib

@@ -1,0 +1,8 @@
+#Files to Ignore
+
+# Temp Files
+__pycache__
+
+# Unsorted Videos
+FrogArbitrary.mp4
+Optimized_Model.mp4
