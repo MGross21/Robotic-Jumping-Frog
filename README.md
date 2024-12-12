@@ -4,12 +4,7 @@
 
 ## Video Presentation
 
-<iframe width="640" height="360" 
-        src="https://www.youtube.com/embed/GysCEJ6NQpc" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-</iframe>
+[![See Here](Figures/yt_logo_rgb_light.png)](https://www.youtube.com/embed/GysCEJ6NQpc)
 
 
 ## Project Overview
