@@ -1,10 +1,12 @@
-# Project Assignment 2: Design, Build, and Simulate Your Robot
+# Robotic Jumping Frog
+*A Bio-Inspired Robotic System Aimed to Compare Physics Simulation and Physical Recreation*
 
 *By Jacob Pisors and Michael Gross*
 
 ## Video Presentation
 
 [![See Here](Figures/yt_logo_rgb_light.png)](https://www.youtube.com/embed/GysCEJ6NQpc)
+`Click YouTube Logo to be Redirected`
 
 ## Project Overview
 
@@ -12,7 +14,7 @@ Continuing with the project's previous research, the team hopes to define the fr
 
 Specifically, the scope of this project is given the frog's inherent body mass, how can we reconfigure the link lengths and material stiffness of the five-bar mechanism, representative of rear frog legs, to determine the optimal vertical and horizontal propulsion during its jumping gait. The rationale for this decision is explained in part 2, where we optimized the design.
 
-[Simulation vs Prototype Final Video Results](Videos/sim_vs_irl.mp4)
+![Simulation vs Prototype Final Video Results](Videos/Final_Results_GIF.gif)
 ___
 
 ### Part 1: Define the System Model
@@ -69,7 +71,7 @@ The mechanism that will be fabricated will be the five-bar mechanism that repres
 
 ![librecadscreenshot](Figures/librecadscreenshot.png)
 
-The link lengths were influenced by the simulation. From the sim, the team knew we wanted to test out how link D, the "foot" affected the jump distance. However, from our simulation, we also gathered ideal proportions of the links for jumping. So, using those proportions, we found out how to dynamically adjust the percentage that links D relative to the overall length whilst keeping the proportions as similar as possible. So we could adjust the percentage we wanted link D to be in our code and have it output where the joints should be in our model.[Here](links.ipynb) is the Python code for this explanation. Below is a figure comparing the percentages of link D we chose to study, based on our simulation that showed that as link D was a greater percentage (up to a certain point), jump performance should be improved.
+The link lengths were influenced by the simulation. From the sim, the team knew we wanted to test out how link D, the "foot" affected the jump distance. However, from our simulation, we also gathered ideal proportions of the links for jumping. So, using those proportions, we found out how to dynamically adjust the percentage that links D relative to the overall length whilst keeping the proportions as similar as possible. So we could adjust the percentage we wanted link D to be in our [code](Frog_Model_Optimization.ipynb) and have it output where the joints should be in our model. Below is a figure comparing the percentages of link D we chose to study, based on our simulation that showed that as link D was a greater percentage (up to a certain point), jump performance should be improved.
 
 ![links_comparison](Figures/links_comparison.png)
 
@@ -110,6 +112,6 @@ The data did not prove the hypothesis and simulation that the larger percentage 
 
 Whilst the team attempted to use an IMU for data collection, the position, double derived from the acceleration, accumulated too much error too quickly and was not useful. Pivoting to using motion tracking software, Tracker, and a marker on the robot to collect the x and y positions about time. The data from this was exported via a .csv file and cleaned and compared to the simulation data. The small scale of the robot and changes could also have been a contributing factor to the results not being as clear as the simulation. Where changes in the small and delicate system can have unintended consequences. For example, some of the leading sources of error between the sim-to-real gap were friction and motor characteristics. Initially, the motors in the simulation were more powerful than they should have been. While we ended up changing them after characterization to be more accurate, they still underperformed in testing. Friction forces such as drag and the poor friction between the foot and surface also affected performance. Changing the surface could have improved this.
 
-Furthermore, in the next version of this device, I would like to upgrade the servos and work more with the five-bar mechanism to add stiffness and have multiple servos on each leg so that the control can be better optimized for jumping and the stiffness can build and act as a spring.
+Furthermore, in the next version of this device, we would like to upgrade the servos and work more with the five-bar mechanism to add stiffness and have multiple servos on each leg so that the control can be better optimized for jumping and the stiffness can build and act as a spring.
 
 ___
