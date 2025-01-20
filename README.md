@@ -6,6 +6,7 @@
 ## Video Presentation
 
 [![See Here](Figures/yt_logo_rgb_light.png)](https://www.youtube.com/embed/GysCEJ6NQpc)
+\
 `Click YouTube Logo to be Redirected`
 
 ## Project Overview
