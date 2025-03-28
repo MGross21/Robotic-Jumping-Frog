@@ -19,3 +19,5 @@ numpy
 scipy
 sympy
 matplotlib
+mujoco-toolbox
+scikit-learn
